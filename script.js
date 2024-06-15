@@ -1,3 +1,4 @@
+import { trie } from "./trie.js";
 let SearchName = document.querySelector(".SearchNumberName");
 let SaveName = document.querySelector(".AddNumberName");
 let DeleteName = document.querySelector(".DeleteNumberName");
@@ -9,6 +10,42 @@ let DeleteNumberValue = document.querySelector(".DeleteNumberValue");
 let callButton = document.querySelector(".callButton");
 let saveButton = document.querySelector(".saveButton");
 let deleteButton = document.querySelector(".deleteButton");
+// Creating contact list
+let ContactList = {};
+function addContact(ContactList, name, phoneNumber) {
+  if (!ContactList[name]) {
+    ContactList[name] = [];
+  }
+  ContactList[name].push(phoneNumber);
+}
+// generate Random Name
+function generateRandomName() {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const nameLength = Math.floor(Math.random() * 8) + 3; // Random name length between 3 and 10
+  let name = "";
+
+  for (let i = 0; i < nameLength; i++) {
+    const randomIndex = Math.floor(Math.random() * alphabet.length);
+    name += alphabet[randomIndex];
+  }
+
+  return name.charAt(0).toUpperCase() + name.slice(1); // Capitalize the first letter
+}
+// genrate phone number
+function generateRandomPhoneNumber() {
+  let phoneNumber = "+91 ";
+  for (let i = 0; i < 8; i++) {
+    phoneNumber += Math.floor(Math.random() * 10);
+  }
+  return phoneNumber;
+}
+// Storing 1000 of contactes
+for (let i = 0; i < 1000; i++) {
+  let name = generateRandomName();
+  let phoneNumber = generateRandomPhoneNumber();
+  trie.insert(name);
+  addContact(ContactList, name, phoneNumber);
+}
 
 // Dropdown logic for SearchName
 let dropdownContainerSearch = document.createElement("div");

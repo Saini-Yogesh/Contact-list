@@ -1,3 +1,6 @@
+
+export { trie }
+
 class TrieNode {
   constructor() {
     this.childNode = Array(128).fill(null); // 128 ASCII characters
@@ -41,7 +44,7 @@ class Trie {
     for (let i = 0; i < prefix.length; i++) {
       const charCode = prefix.charCodeAt(i);
       if (currentNode.childNode[charCode] === null) {
-        return []; 
+        return [];
       }
       currentNode = currentNode.childNode[charCode];
     }
@@ -106,4 +109,4 @@ class Trie {
   }
 }
 
-const trie = new Trie();
+let trie = new Trie();
