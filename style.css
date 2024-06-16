@@ -60,6 +60,10 @@
   padding: 0 1vmin 0 1vmin;
   margin: 0 1vmin 0 1vmin;
 }
+.Search-input,
+.Delete-input {
+  background-color: #fffeec;
+}
 .SearchNumberName,
 .AddNumberName,
 .DeleteNumberName {
@@ -113,16 +117,13 @@
 }
 /* dropdown contaner  */
 .dropdown-container {
-  position: relative;
-  margin: 1vmin;
+  position: absolute;
+  margin-left: 1vmin;
 }
 .dropdown {
-  max-height: 20vmin; /* Set the maximum height */
+  width: 40vmin;
+  max-height: 19vmin; /* Set the maximum height */
   overflow-y: auto;
-  position: relative;
-  top: 100%;
-  left: 0;
-  right: 0;
   background-color: white;
   border: 1px solid #ddd;
   padding: 1vmin;
@@ -130,7 +131,7 @@
 
 .dropdown-item {
   cursor: pointer;
-  font-size: 3vmin;
+  font-size: 2.8vmin;
 }
 
 .dropdown-item:hover {
