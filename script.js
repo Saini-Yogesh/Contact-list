@@ -13,7 +13,7 @@ let deleteButton = document.querySelector(".deleteButton");
 // Dropdown logic for SearchName
 let dropdownContainerSearch = document.createElement("div");
 dropdownContainerSearch.classList.add("dropdown-container");
-document.querySelector(".SearchNumber").appendChild(dropdownContainerSearch);
+document.querySelector(".Search-input").appendChild(dropdownContainerSearch);
 
 SearchName.addEventListener("input", () => {
   let value = SearchName.value;
@@ -50,7 +50,7 @@ SearchName.addEventListener("input", () => {
 // Dropdown logic for DeleteName
 let dropdownContainerDelete = document.createElement("div");
 dropdownContainerDelete.classList.add("dropdown-container");
-document.querySelector(".DeletNumber").appendChild(dropdownContainerDelete);
+document.querySelector(".Delete-input").appendChild(dropdownContainerDelete);
 
 DeleteName.addEventListener("input", () => {
   let value = DeleteName.value;
@@ -87,21 +87,20 @@ DeleteName.addEventListener("input", () => {
 // Save button
 saveButton.addEventListener("click", () => {
   let value = AddNumberValue.value;
-  value = "+91 " + value;
   let name = SaveName.value;
   if (value.length === 0 && name.length === 0) {
     alert("Please enter details");
     return;
   }
-  if (value.length < 10) {
-    alert("Please enter a complete number :) ");
+  if (value.length < 10 || value.length > 10) {
+    alert("Please enter a valid number :) ");
     return;
   }
   if (name.length < 1) {
     alert("Please enter the name");
     return;
   }
-
+  value = "+91 " + value;
   addContact(ContactList, name, value);
   trie.insert(name);
   alert("Contact added successfully.");
