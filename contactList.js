@@ -9,7 +9,7 @@ function addContact(ContactList, name, phoneNumber) {
 // generate Random Name
 function generateRandomName() {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
-  const nameLength = Math.floor(Math.random() * 8) + 3; // Random name length between 3 and 10
+  const nameLength = Math.floor(Math.random() * 5) + 3; // Random name length between 3 and 7
   let name = "";
 
   for (let i = 0; i < nameLength; i++) {
@@ -22,7 +22,7 @@ function generateRandomName() {
 // genrate phone number
 function generateRandomPhoneNumber() {
   let phoneNumber = "+91 ";
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 10; i++) {
     phoneNumber += Math.floor(Math.random() * 10);
   }
   return phoneNumber;
