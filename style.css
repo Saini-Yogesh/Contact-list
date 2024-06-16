@@ -1,7 +1,14 @@
 * {
   margin: 0px;
   padding: 0px;
-  background-color: #556fb5;
+}
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("/Contact-list/back1.jpg");
+  background-size: cover, cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 /* navbar  */
 .navbar {
@@ -21,9 +28,12 @@
   width: 10vmin;
   background-size: cover;
   margin: 1vmin;
+  border-radius: 50%;
 }
 .navbar-text {
   font-size: 7vmin;
+  font-weight: 700;
+  color: white;
 }
 /* container  */
 .container {
@@ -36,6 +46,7 @@
 .SearchNumber,
 .AddNumber,
 .DeletNumber {
+  /* height: 59vmin; */
   border: solid black 0.2vmin;
   padding: 2vmin;
   display: flex;
