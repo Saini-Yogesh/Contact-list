@@ -2,7 +2,6 @@ class TrieNode {
   constructor() {
     this.childNode = Array(128).fill(null); // 128 ASCII characters
     this.wordEnd = false;
-    this.count = 0;
   }
 }
 
@@ -20,7 +19,6 @@ class Trie {
       }
       currentNode = currentNode.childNode[charCode];
     }
-    currentNode.count++;
     currentNode.wordEnd = true;
   }
 
@@ -41,7 +39,7 @@ class Trie {
     for (let i = 0; i < prefix.length; i++) {
       const charCode = prefix.charCodeAt(i);
       if (currentNode.childNode[charCode] === null) {
-        return []; 
+        return [];
       }
       currentNode = currentNode.childNode[charCode];
     }
@@ -70,20 +68,13 @@ class Trie {
   _delete(node, key, index) {
     if (index === key.length) {
       if (node.wordEnd) {
-        node.count--;
-        if (node.count === 0) {
-          node.wordEnd = false;
-        }
+        node.wordEnd = false;
         return false;
       }
       return false;
     }
 
     const charCode = key.charCodeAt(index);
-    if (node.childNode[charCode] === null) {
-      return false;
-    }
-
     const shouldDeleteChildNode = this._delete(
       node.childNode[charCode],
       key,
@@ -93,16 +84,13 @@ class Trie {
     if (shouldDeleteChildNode) {
       node.childNode[charCode] = null;
       return (
+        // these ie convert a object to an array then check every child is null or not
         Object.values(node.childNode).every((child) => child === null) &&
         !node.wordEnd
       );
     }
 
     return false;
-  }
-
-  delete(key) {
-    this._delete(this.root, key.toLowerCase(), 0);
   }
 }
 
